@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore Egypt — Journeys Along the Nile</title>
+<meta name="description" content="Explore Egypt curates handcrafted journeys to the pyramids of Giza, the temples of Luxor, Abu Simbel and the Nile — expert guides, boutique Nile cruises, and seamless planning.">
+
+<!-- Google Fonts: Cinzel (carved-inscription display face) + Jost (clean geometric body face) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   0. DESIGN TOKENS — palette, type scale, spacing, shadows
+   ============================================================ */
+:root{
+  /* Colour palette — Egyptian papyrus, Nile night, faience turquoise, ancient gold */
+  --ink:        #241A10;
+  --ink-soft:   #4A3C2A;
+  --night:      #12213A;   /* deep Nile-night blue, used for dark sections */
+  --night-2:    #1B3153;
+  --night-3:    #0D1830;
+  --cream:      #F3E7C9;   /* papyrus */
+  --cream-2:    #EAD9AC;   /* deeper papyrus, used for cards */
+  --cream-3:    #FBF5E6;   /* lightest, used for text on dark */
+  --gold:       #C99A3B;
+  --gold-light: #E8C468;
+  --gold-deep:  #9C7223;
+  --teal:       #1F9E96;   /* faience turquoise — signature accent */
+  --teal-dark:  #146B66;
+  --teal-light: #6FCFC6;
+  --clay:       #B0603A;   /* used sparingly for warmth / badges */
+
+  --font-display: 'Cinzel', 'Georgia', serif;
+  --font-body: 'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --container: 1180px;
+  --radius-s: 6px;
+  --radius-m: 14px;
+  --radius-l: 28px;
+
+  --shadow-soft: 0 10px 30px -12px rgba(18,33,58,0.35);
+  --shadow-strong: 0 24px 60px -16px rgba(18,33,58,0.5);
+
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+
+/* ============================================================
+   1. RESET & BASE
+   ============================================================ */
+*, *::before, *::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+body{
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--cream);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img, svg{ display:block; max-width: 100%; }
+a{ color: inherit; text-decoration: none; }
+ul{ list-style:none; margin:0; padding:0; }
+button{ font-family: inherit; cursor:pointer; }
+h1,h2,h3,h4{
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+p{ margin: 0; }
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
+
+/* Visible keyboard focus everywhere */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+  outline: 3px solid var(--teal);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.container{
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section{ padding: 72px 0; }
+@media(min-width: 768px){ .section{ padding: 100px 0; } }
+
+.section--dark{ background: var(--night); color: var(--cream-3); }
+.section--dark h2, .section--dark h3{ color: var(--cream-3); }
+
+/* Eyebrow / "cartouche" label — a rounded pill echoing the carved cartouche
+   frames pharaohs' names were written in. Used consistently as the section
+   signature so every eyebrow across the page reads as one motif. */
+.eyebrow{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  background: rgba(201,154,59,0.12);
+  border: 1px solid rgba(201,154,59,0.4);
+  padding: 7px 18px 7px 14px;
+  border-radius: 999px;
+}
+.section--dark .eyebrow{
+  color: var(--gold-light);
+  background: rgba(232,196,104,0.1);
+  border-color: rgba(232,196,104,0.35);
+}
+.eyebrow .dot{ width:5px; height:5px; border-radius:50%; background: currentColor; flex-shrink:0; }
+
+.section-head{ max-width: 640px; margin-bottom: 44px; }
+.section-head h2{ font-size: clamp(1.8rem, 4vw, 2.6rem); margin-top: 14px; }
+.section-head p{ margin-top: 14px; color: var(--ink-soft); font-size: 1.05rem; }
+.section--dark .section-head p{ color: rgba(251,245,230,0.75); }
+
+/* Buttons */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 30px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), background 0.25s ease, color 0.25s ease, border-color .25s ease;
+  white-space: nowrap;
+}
+.btn:hover{ transform: translateY(-2px); }
+.btn:active{ transform: translateY(0); }
+
+.btn--gold{ background: var(--gold); color: var(--night-3); }
+.btn--gold:hover{ background: var(--gold-light); box-shadow: 0 14px 28px -10px rgba(201,154,59,0.55); }
+
+.btn--outline{ background: transparent; color: var(--cream-3); border-color: rgba(251,245,230,0.5); }
+.btn--outline:hover{ background: rgba(251,245,230,0.12); border-color: var(--cream-3); }
+
+.btn--teal{ background: var(--teal); color: #08211f; }
+.btn--teal:hover{ background: var(--teal-light); box-shadow: 0 14px 28px -10px rgba(31,158,150,0.5); }
+
+.btn--ink-outline{ background: transparent; color: var(--ink); border-color: rgba(36,26,16,0.3); }
+.btn--ink-outline:hover{ background: rgba(36,26,16,0.06); border-color: var(--ink); }
+
+.btn--full{ width: 100%; }
+
+/* ============================================================
+   2. NAVIGATION
+   ============================================================ */
+.site-header{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 18px 0;
+  transition: padding 0.35s var(--ease), background-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+.site-header .container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Scrolled state: shrinks and gains a solid backing so text stays legible
+   once the hero illustration has scrolled away */
+.site-header.is-scrolled{
+  padding: 10px 0;
+  background: rgba(18,33,58,0.92);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px -12px rgba(0,0,0,0.4);
+}
+
+.brand{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--cream-3);
+  letter-spacing: 0.02em;
+}
+.brand-mark{ width: 34px; height: 34px; flex-shrink: 0; }
+
+.nav-links{
+  display: none;
+  align-items: center;
+  gap: 34px;
+}
+.nav-links a{
+  font-size: 0.94rem;
+  font-weight: 500;
+  color: rgba(251,245,230,0.85);
+  position: relative;
+  padding: 4px 0;
+  transition: color 0.25s ease;
+}
+.nav-links a::after{
+  content: "";
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 0%;
+  height: 2px;
+  background: var(--gold-light);
+  transition: width 0.3s var(--ease);
+}
+.nav-links a:hover, .nav-links a.is-active{ color: var(--cream-3); }
+.nav-links a:hover::after, .nav-links a.is-active::after{ width: 100%; }
+
+.nav-actions{ display:flex; align-items:center; gap: 14px; }
+.nav-actions .btn{ display: none; }
+
+.nav-toggle{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(251,245,230,0.35);
+  background: transparent;
+}
+.nav-toggle span{
+  width: 18px; height: 2px; background: var(--cream-3);
+  transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2){ opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile dropdown panel */
+.mobile-panel{
+  position: fixed;
+  inset: 0;
+  top: 0;
+  background: var(--night-3);
+  padding: 100px 28px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.45s var(--ease), opacity 0.35s ease;
+  z-index: 900;
+}
+.mobile-panel.is-open{ transform: translateY(0); opacity: 1; }
+.mobile-panel a{
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--cream-3);
+  border-bottom: 1px solid rgba(251,245,230,0.12);
+  padding-bottom: 16px;
+}
+.mobile-panel .btn{ margin-top: 10px; }
+
+@media (min-width: 900px){
+  .nav-links{ display: flex; }
+  .nav-actions .btn{ display: inline-flex; }
+  .nav-toggle{ display: none; }
+  .mobile-panel{ display: none; }
+}
+
+/* ============================================================
+   3. HERO
+   ============================================================ */
+.hero{
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  background: linear-gradient(180deg, var(--night-3) 0%, var(--night-2) 55%, var(--night) 100%);
+  color: var(--cream-3);
+  overflow: hidden;
+}
+.hero-illustration{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.hero-illustration svg{ width: 100%; height: 100%; }
+
+.hero-content{
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 160px 0 64px;
+}
+.hero-eyebrow{
+  display:inline-flex; align-items:center; gap:10px;
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold-light); margin-bottom: 22px;
+}
+.hero-eyebrow .rule{ width: 34px; height: 1px; background: var(--gold-light); }
+
+.hero h1{
+  font-size: clamp(2.4rem, 7.5vw, 4.6rem);
+  max-width: 14ch;
+  color: var(--cream-3);
+}
+.hero h1 em{
+  font-style: normal;
+  color: var(--gold-light);
+}
+.hero-sub{
+  margin-top: 22px;
+  max-width: 46ch;
+  font-size: 1.08rem;
+  color: rgba(251,245,230,0.8);
+}
+.hero-actions{
+  margin-top: 36px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.hero-stats{
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px 18px;
+  max-width: 560px;
+  border-top: 1px solid rgba(251,245,230,0.15);
+  padding-top: 28px;
+}
+.hero-stats .stat b{
+  display:block;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--cream-3);
+}
+.hero-stats .stat span{
+  font-size: 0.82rem;
+  color: rgba(251,245,230,0.65);
+}
+@media(min-width: 640px){
+  .hero-stats{ grid-template-columns: repeat(4, auto); gap: 40px; }
+}
+
+/* ============================================================
+   4. DESTINATIONS — the "Nile route" signature section
+   ============================================================ */
+.destinations{ position: relative; background: var(--cream); overflow: hidden; }
+
+/* The winding gold ribbon that threads behind the destination cards,
+   standing in for the Nile's course connecting each site. */
+.nile-ribbon{
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  opacity: 0.55;
+  z-index: 0;
+}
+
+.destinations-grid{
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 26px;
+}
+@media(min-width: 680px){ .destinations-grid{ grid-template-columns: 1fr 1fr; } }
+@media(min-width: 1020px){ .destinations-grid{ grid-template-columns: repeat(3, 1fr); } }
+
+.dest-card{
+  background: var(--cream-3);
+  border-radius: var(--radius-l);
+  padding: 28px 26px 30px;
+  border: 1px solid rgba(36,26,16,0.08);
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.dest-card:hover{
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-soft);
+  border-color: rgba(201,154,59,0.4);
+}
+.dest-icon{
+  width: 54px; height: 54px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+  display:flex; align-items:center; justify-content:center;
+  color: var(--cream-3);
+  flex-shrink: 0;
+}
+.dest-icon svg{ width: 28px; height: 28px; }
+.dest-region{
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+.dest-card h3{ font-size: 1.25rem; margin-top: 2px; }
+.dest-card p{ color: var(--ink-soft); font-size: 0.96rem; }
+.dest-link{
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--teal-dark);
+}
+.dest-link svg{ width: 16px; height: 16px; transition: transform 0.3s var(--ease); }
+.dest-card:hover .dest-link svg{ transform: translateX(5px); }
+
+/* ============================================================
+   5. PACKAGES
+   ============================================================ */
+.packages{ background: var(--cream-2); }
+.packages-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 26px;
+  align-items: stretch;
+}
+@media(min-width: 900px){ .packages-grid{ grid-template-columns: repeat(3, 1fr); } }
+
+.pkg-card{
+  position: relative;
+  background: var(--cream-3);
+  border-radius: var(--radius-l);
+  padding: 34px 28px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(36,26,16,0.08);
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.pkg-card:hover{ transform: translateY(-6px); box-shadow: var(--shadow-soft); }
+
+.pkg-card--featured{
+  background: var(--night);
+  color: var(--cream-3);
+  border-color: var(--night);
+}
+.pkg-card--featured .pkg-duration{ color: rgba(251,245,230,0.65); }
+.pkg-card--featured h3{ color: var(--cream-3); }
+.pkg-card--featured .pkg-desc{ color: rgba(251,245,230,0.72); }
+.pkg-card--featured .pkg-feature{ color: rgba(251,245,230,0.88); }
+.pkg-card--featured .pkg-feature svg{ color: var(--gold-light); }
+.pkg-card--featured .pkg-divider{ border-color: rgba(251,245,230,0.15); }
+
+.pkg-badge{
+  position: absolute;
+  top: -14px; left: 28px;
+  background: var(--gold);
+  color: var(--night-3);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 7px 16px;
+  border-radius: 999px;
+  box-shadow: 0 8px 18px -6px rgba(201,154,59,0.6);
+}
+
+.pkg-duration{ font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal-dark); }
+.pkg-card h3{ font-size: 1.5rem; margin-top: 8px; }
+.pkg-desc{ margin-top: 10px; color: var(--ink-soft); font-size: 0.95rem; }
+
+.pkg-price{ margin-top: 22px; display:flex; align-items:baseline; gap: 6px; }
+.pkg-price .amount{ font-family: var(--font-display); font-size: 2.2rem; }
+.pkg-price .unit{ font-size: 0.85rem; opacity: 0.7; }
+
+.pkg-divider{ margin: 22px 0; border: none; border-top: 1px solid rgba(36,26,16,0.1); }
+
+.pkg-features{ display: flex; flex-direction: column; gap: 13px; flex-grow: 1; }
+.pkg-feature{ display:flex; align-items:flex-start; gap: 10px; font-size: 0.92rem; }
+.pkg-feature svg{ width: 18px; height: 18px; flex-shrink: 0; color: var(--teal-dark); margin-top: 1px; }
+
+.pkg-card .btn{ margin-top: 26px; }
+
+/* ============================================================
+   6. WHY CHOOSE US
+   ============================================================ */
+.why-us{ background: var(--cream); }
+.why-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media(min-width: 640px){ .why-grid{ grid-template-columns: 1fr 1fr; } }
+@media(min-width: 1020px){ .why-grid{ grid-template-columns: repeat(3, 1fr); } }
+
+.why-item{
+  display: flex;
+  gap: 18px;
+  padding: 26px;
+  border-radius: var(--radius-m);
+  transition: background 0.35s ease, transform 0.35s var(--ease);
+}
+.why-item:hover{ background: var(--cream-2); transform: translateY(-3px); }
+.why-icon{
+  width: 50px; height: 50px;
+  border-radius: 14px;
+  flex-shrink: 0;
+  display: flex; align-items:center; justify-content:center;
+  background: var(--night);
+  color: var(--gold-light);
+}
+.why-icon svg{ width: 24px; height: 24px; }
+.why-item h3{ font-size: 1.08rem; }
+.why-item p{ margin-top: 8px; color: var(--ink-soft); font-size: 0.93rem; }
+
+/* ============================================================
+   7. TESTIMONIALS
+   ============================================================ */
+.testimonials{ background: var(--night); color: var(--cream-3); position: relative; overflow: hidden; }
+.testimonial-slider{ position: relative; max-width: 760px; margin: 0 auto; }
+.testimonial-track{ position: relative; min-height: 260px; }
+
+.testimonial-slide{
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.testimonial-slide.is-active{
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  position: relative;
+}
+
+.stars{ display:flex; gap: 4px; color: var(--gold-light); margin-bottom: 20px; }
+.stars svg{ width: 18px; height: 18px; }
+
+.testimonial-quote{
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.6vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--cream-3);
+  max-width: 56ch;
+}
+.testimonial-person{ margin-top: 26px; display:flex; align-items:center; gap: 14px; }
+.testimonial-avatar{
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  display:flex; align-items:center; justify-content:center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--night-3);
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+}
+.testimonial-name{ font-weight: 600; font-size: 0.95rem; text-align: left; }
+.testimonial-origin{ font-size: 0.82rem; color: rgba(251,245,230,0.6); text-align: left; }
+
+.testimonial-controls{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 40px;
+}
+.testimonial-arrow{
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(251,245,230,0.3);
+  background: transparent;
+  color: var(--cream-3);
+  display:flex; align-items:center; justify-content:center;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+.testimonial-arrow svg{ width: 18px; height: 18px; }
+.testimonial-arrow:hover{ background: rgba(251,245,230,0.1); border-color: var(--cream-3); transform: scale(1.06); }
+
+.testimonial-dots{ display:flex; gap: 9px; }
+.testimonial-dots button{
+  width: 8px; height: 8px; border-radius: 50%;
+  border: none; background: rgba(251,245,230,0.3);
+  padding: 0;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.testimonial-dots button.is-active{ background: var(--gold-light); transform: scale(1.3); }
+
+/* ============================================================
+   8. CALL TO ACTION
+   ============================================================ */
+.cta{
+  background: linear-gradient(135deg, var(--teal-dark), var(--teal));
+  color: var(--cream-3);
+  position: relative;
+  overflow: hidden;
+}
+.cta-inner{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: flex-start;
+}
+@media(min-width: 900px){
+  .cta-inner{ flex-direction: row; align-items: center; justify-content: space-between; gap: 60px; }
+}
+.cta-text h2{ font-size: clamp(1.8rem, 4vw, 2.4rem); color: var(--cream-3); max-width: 16ch; }
+.cta-text p{ margin-top: 14px; max-width: 46ch; color: rgba(251,245,230,0.85); }
+
+.cta-form{ width: 100%; max-width: 420px; flex-shrink: 0; }
+.form-row{ display:flex; flex-direction: column; gap: 14px; }
+.field{ display: flex; flex-direction: column; gap: 6px; }
+.field label{ font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; color: rgba(251,245,230,0.85); }
+.field input{
+  padding: 13px 16px;
+  border-radius: var(--radius-s);
+  border: 1px solid rgba(251,245,230,0.4);
+  background: rgba(255,255,255,0.1);
+  color: var(--cream-3);
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+.field input::placeholder{ color: rgba(251,245,230,0.55); }
+.field input:focus{ background: rgba(255,255,255,0.16); border-color: var(--cream-3); outline: none; }
+.field input.has-error{ border-color: #F2A5A5; }
+.field-error{
+  font-size: 0.78rem;
+  color: #FFE0E0;
+  min-height: 1em;
+}
+.cta-form .btn{ margin-top: 4px; }
+.form-success{
+  display: none;
+  margin-top: 14px;
+  font-size: 0.9rem;
+  background: rgba(255,255,255,0.15);
+  border-radius: var(--radius-s);
+  padding: 12px 14px;
+}
+.form-success.is-visible{ display: block; }
+
+/* ============================================================
+   9. FOOTER
+   ============================================================ */
+.site-footer{ background: var(--night-3); color: rgba(251,245,230,0.8); padding: 68px 0 28px; }
+.footer-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+@media(min-width: 700px){ .footer-grid{ grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 32px; } }
+
+.footer-brand .brand{ margin-bottom: 14px; }
+.footer-brand p{ font-size: 0.92rem; color: rgba(251,245,230,0.6); max-width: 34ch; }
+
+.footer-social{ display: flex; gap: 12px; margin-top: 22px; }
+.footer-social a{
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(251,245,230,0.25);
+  display: flex; align-items:center; justify-content:center;
+  transition: background 0.25s ease, transform 0.25s ease, border-color .25s ease;
+}
+.footer-social a svg{ width: 16px; height: 16px; }
+.footer-social a:hover{ background: var(--gold); border-color: var(--gold); color: var(--night-3); transform: translateY(-3px); }
+
+.footer-col h4{
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream-3);
+  margin-bottom: 18px;
+}
+.footer-col ul{ display: flex; flex-direction: column; gap: 12px; }
+.footer-col a{ font-size: 0.92rem; transition: color 0.25s ease, padding-left 0.25s ease; }
+.footer-col a:hover{ color: var(--gold-light); padding-left: 3px; }
+
+.footer-contact li{ font-size: 0.92rem; display:flex; gap: 10px; align-items:flex-start; }
+.footer-contact svg{ width: 16px; height: 16px; margin-top: 3px; flex-shrink: 0; color: var(--gold-light); }
+
+.footer-bottom{
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(251,245,230,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 0.82rem;
+  color: rgba(251,245,230,0.5);
+}
+@media(min-width: 700px){ .footer-bottom{ flex-direction: row; align-items:center; justify-content: space-between; } }
+.footer-legal{ display: flex; gap: 22px; flex-wrap: wrap; }
+.footer-legal a:hover{ color: var(--cream-3); }
+
+/* Back to top */
+.back-to-top{
+  position: fixed;
+  right: 22px; bottom: 22px;
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--night-3);
+  border: none;
+  display: flex; align-items:center; justify-content:center;
+  box-shadow: var(--shadow-soft);
+  opacity: 0; visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s;
+  z-index: 800;
+}
+.back-to-top.is-visible{ opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top svg{ width: 20px; height: 20px; }
+.back-to-top:hover{ background: var(--gold-light); }
+
+/* ============================================================
+   10. SCROLL-REVEAL ANIMATION
+   ============================================================ */
+.reveal{
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.reveal.in-view{ opacity: 1; transform: translateY(0); }
+/* Stagger children of a revealed grid slightly for a livelier entrance */
+.reveal-stagger > *{ transition-delay: calc(var(--i, 0) * 70ms); }
+
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- =========================================================
+     SKIP LINK — accessibility: lets keyboard/screen-reader users
+     jump straight to content, bypassing the nav
+     ========================================================= -->
+<a href="#main-content" class="visually-hidden-focusable" style="position:absolute; left:-999px; top:0; background:#fff; color:#000; padding:10px 16px; z-index:2000; border-radius:0 0 8px 0;" onfocus="this.style.left='0'" onblur="this.style.left='-999px'">Skip to main content</a>
+
+<!-- =========================================================
+     HEADER / NAVIGATION
+     ========================================================= -->
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <a href="#top" class="brand" aria-label="Explore Egypt — home">
+      <!-- Brand mark: a simplified cartouche + ankh, echoing the eyebrow motif -->
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="2" y="7" width="36" height="26" rx="13" stroke="#E8C468" stroke-width="2"/>
+        <path d="M20 13c-2.2 0-4 1.7-4 4 0 2.6 4 6.5 4 6.5s4-3.9 4-6.5c0-2.3-1.8-4-4-4Z" fill="#E8C468"/>
+        <path d="M20 23.5V27M17 27h6" stroke="#E8C468" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      Explore Egypt
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#destinations" data-nav>Destinations</a>
+      <a href="#packages" data-nav>Packages</a>
+      <a href="#why-us" data-nav>Why Us</a>
+      <a href="#testimonials" data-nav>Testimonials</a>
+      <a href="#contact" data-nav>Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="#contact" class="btn btn--gold">Plan My Trip</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile navigation panel -->
+<div class="mobile-panel" id="mobilePanel">
+  <a href="#destinations" data-nav>Destinations</a>
+  <a href="#packages" data-nav>Packages</a>
+  <a href="#why-us" data-nav>Why Us</a>
+  <a href="#testimonials" data-nav>Testimonials</a>
+  <a href="#contact" data-nav>Contact</a>
+  <a href="#contact" class="btn btn--gold" data-nav>Plan My Trip</a>
+</div>
+
+<main id="main-content">
+
+  <!-- =======================================================
+       HERO
+       ======================================================= -->
+  <section class="hero" id="top">
+    <div class="hero-illustration" aria-hidden="true">
+      <!-- Original SVG illustration: pyramids at dusk against a gradient sky,
+           built as CSS-friendly vector shapes rather than a photo, so the
+           page has zero external image dependencies. -->
+      <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#0D1830"/>
+            <stop offset="45%" stop-color="#1B3153"/>
+            <stop offset="78%" stop-color="#7A5A3A"/>
+            <stop offset="100%" stop-color="#C99A3B"/>
+          </linearGradient>
+          <radialGradient id="sunGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#FBEBC0"/>
+            <stop offset="100%" stop-color="#E8C468" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="1600" height="900" fill="url(#skyGrad)"/>
+        <!-- stars -->
+        <g fill="#F3E7C9" opacity="0.55">
+          <circle cx="120" cy="90" r="1.6"/><circle cx="260" cy="150" r="1.2"/>
+          <circle cx="410" cy="70" r="1.8"/><circle cx="700" cy="120" r="1.3"/>
+          <circle cx="950" cy="60" r="1.5"/><circle cx="1200" cy="110" r="1.7"/>
+          <circle cx="1420" cy="80" r="1.3"/><circle cx="1520" cy="160" r="1.6"/>
+          <circle cx="80" cy="220" r="1.2"/><circle cx="1340" cy="220" r="1.4"/>
+        </g>
+        <!-- sun glow low on the horizon -->
+        <circle cx="1180" cy="560" r="220" fill="url(#sunGrad)"/>
+        <circle cx="1180" cy="560" r="70" fill="#F6DFA0" opacity="0.9"/>
+        <!-- distant dunes -->
+        <path d="M0 640 Q 250 590 520 630 T 1040 620 T 1600 650 V900 H0 Z" fill="#3A2E22" opacity="0.55"/>
+        <!-- great pyramids silhouette -->
+        <polygon points="230,660 430,660 330,430" fill="#151022" opacity="0.9"/>
+        <polygon points="420,660 660,660 540,380" fill="#0F0C18" opacity="0.95"/>
+        <polygon points="640,660 830,660 735,470" fill="#1A1424" opacity="0.85"/>
+        <!-- sphinx-ish low mound for depth -->
+        <ellipse cx="980" cy="655" rx="120" ry="16" fill="#1A1424" opacity="0.5"/>
+        <!-- foreground dune -->
+        <path d="M0 700 Q 300 660 650 705 T 1250 690 T 1600 720 V900 H0 Z" fill="#241A10"/>
+        <path d="M0 760 Q 400 720 800 760 T 1600 770 V900 H0 Z" fill="#1B140C"/>
+      </svg>
+    </div>
+
+    <div class="container hero-content">
+      <p class="hero-eyebrow"><span class="rule"></span> Est. journeys since 2009</p>
+      <h1>Egypt, written in <em>gold</em> and stone.</h1>
+      <p class="hero-sub">Handcrafted tours through five thousand years of history — from the plateau at Giza to the temples of Luxor and a private felucca gliding down the Nile.</p>
+      <div class="hero-actions">
+        <a href="#packages" class="btn btn--gold">View Travel Packages</a>
+        <a href="#destinations" class="btn btn--outline">Explore Destinations</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat"><b>5,000+</b><span>Years of history to walk through</span></div>
+        <div class="stat"><b>18</b><span>Curated itineraries</span></div>
+        <div class="stat"><b>4.9/5</b><span>Average traveller rating</span></div>
+        <div class="stat"><b>12k+</b><span>Travellers guided</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================
+       POPULAR DESTINATIONS
+       ======================================================= -->
+  <section class="section destinations" id="destinations">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow"><span class="dot"></span> Along the Nile</span>
+        <h2>Popular destinations</h2>
+        <p>Six regions, each with its own character — from the desert plateau of Giza to the reef-lined coast of the Red Sea.</p>
+      </div>
+
+      <div class="destinations-grid reveal-stagger">
+        <!-- Card 1 — Giza -->
+        <article class="dest-card reveal" style="--i:0">
+          <div class="dest-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3 3 20h18L12 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 20 12 10l3 10" stroke="currentColor" stroke-width="1.4"/></svg>
+          </div>
+          <span class="dest-region">Lower Egypt</span>
+          <h3>Giza &amp; Cairo</h3>
+          <p>Stand before the last surviving wonder of the ancient world and wander the Egyptian Museum's treasures.</p>
+          <a href="#packages" class="dest-link">Explore packages
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+        <!-- Card 2 — Luxor & Karnak -->
+        <article class="dest-card reveal" style="--i:1">
+          <div class="dest-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 21V9M9 21V6M12 21V9M15 21V6M19 21V9M4 9h16M4 6h2M18 6h2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          </div>
+          <span class="dest-region">Upper Egypt</span>
+          <h3>Luxor &amp; Karnak</h3>
+          <p>Walk the colonnades of Karnak Temple and cross the river to the Valley of the Kings at dawn.</p>
+          <a href="#packages" class="dest-link">Explore packages
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+        <!-- Card 3 — Abu Simbel -->
+        <article class="dest-card reveal" style="--i:2">
+          <div class="dest-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="6" height="16" rx="1" stroke="currentColor" stroke-width="1.6"/><rect x="14" y="4" width="6" height="16" rx="1" stroke="currentColor" stroke-width="1.6"/><circle cx="7" cy="9" r="1" fill="currentColor"/><circle cx="17" cy="9" r="1" fill="currentColor"/></svg>
+          </div>
+          <span class="dest-region">Nubia</span>
+          <h3>Abu Simbel</h3>
+          <p>Ramesses II's colossal rock temples, relocated stone by stone above the shores of Lake Nasser.</p>
+          <a href="#packages" class="dest-link">Explore packages
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+        <!-- Card 4 — Alexandria -->
+        <article class="dest-card reveal" style="--i:3">
+          <div class="dest-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M6 21V10l6-6 6 6v11" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3 21h18M10 21v-6h4v6" stroke="currentColor" stroke-width="1.7"/></svg>
+          </div>
+          <span class="dest-region">Mediterranean Coast</span>
+          <h3>Alexandria</h3>
+          <p>Catacombs, corniche sunsets and the spirit of the ancient library, reimagined on the coast.</p>
+          <a href="#packages" class="dest-link">Explore packages
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+        <!-- Card 5 — Aswan / Nile Cruise -->
+        <article class="dest-card reveal" style="--i:4">
+          <div class="dest-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 17c1.5 1.3 3 1.3 4.5 0s3-1.3 4.5 0 3 1.3 4.5 0 3-1.3 4.5 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 4v9M8 8h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          </div>
+          <span class="dest-region">Upper Egypt</span>
+          <h3>Aswan &amp; Nile Cruise</h3>
+          <p>Drift past Nubian villages and granite quarries aboard a private dahabiya under sail.</p>
+          <a href="#packages" class="dest-link">Explore packages
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+        <!-- Card 6 — Red Sea -->
+        <article class="dest-card reveal" style="--i:5">
+          <div class="dest-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M2 15c1.6-2.2 3-2.2 4.5 0s2.9 2.2 4.5 0 2.9-2.2 4.5 0 2.9 2.2 4.5 0M2 19c1.6-2.2 3-2.2 4.5 0s2.9 2.2 4.5 0 2.9-2.2 4.5 0 2.9 2.2 4.5 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M12 4a4 4 0 0 0-4 4c0 2 4 4.5 4 4.5s4-2.5 4-4.5a4 4 0 0 0-4-4Z" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <span class="dest-region">Red Sea Coast</span>
+          <h3>Hurghada &amp; Marsa Alam</h3>
+          <p>Coral reefs a few strokes from shore, dive schools, and quiet mornings on the water.</p>
+          <a href="#packages" class="dest-link">Explore packages
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================
+       TRAVEL PACKAGES
+       ======================================================= -->
+  <section class="section packages" id="packages">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow"><span class="dot"></span> Itineraries</span>
+        <h2>Travel packages</h2>
+        <p>Every package includes an Egyptologist guide, private transfers, and a dedicated trip concierge — build from here or ask us to tailor one.</p>
+      </div>
+
+      <div class="packages-grid reveal-stagger">
+        <!-- Package 1 -->
+        <article class="pkg-card reveal" style="--i:0">
+          <span class="pkg-duration">5 Days / 4 Nights</span>
+          <h3>Classic Nile Explorer</h3>
+          <p class="pkg-desc">The essential first journey — Cairo's pyramids, the Egyptian Museum, and a short flight south to Luxor's temples.</p>
+          <div class="pkg-price"><span class="amount">$1,150</span><span class="unit">/ person</span></div>
+          <hr class="pkg-divider">
+          <div class="pkg-features">
+            <div class="pkg-feature"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Giza Pyramids &amp; Sphinx tour</div>
+            <div class="pkg-feature"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Egyptian Museum, Cairo</div>
+            <div class="pkg-feature"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Karnak &amp; Luxor Temple</div>
+            <div class="pkg-feature"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> 4★ hotels, daily breakfast</div>
+          </div>
+          <a href="#contact" class="btn btn--ink-outline btn--full">Book this package</a>
+        </article>
+
+        <!-- Package 2 — Featured -->
+        <article class="pkg-card pkg-card--featured reveal" style="--i:1">
+          <span class="pkg-badge">Most booked</span>
+          <span class="pkg-duration">9 Days / 8 Nights</span>
+          <h3>Pharaoh's Grand Tour</h3>
+          <p class="pkg-desc">Cairo, a five-night Nile cruise from Luxor to Aswan, and a sunrise visit to Abu Simbel — the complete arc of ancient Egypt.</p>
+          <div class="pkg-price"><span class="amount">$2,390</span><span class="unit">/ person</span></div>
+          <hr class="pkg-divider">
+          <div class="pkg-features">
+            <div class="pkg-feature"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Everything in Classic Explorer</div>
+            <div class="pkg-feature"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> 5-night boutique Nile cruise</div>
+            <div class="pkg-feature"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Abu Simbel sunrise excursion</div>
+            <div class="pkg-feature"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Hot-air balloon over Luxor</div>
+            <div class="pkg-feature"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Private Egyptologist throughout</div>
+          </div>
+          <a href="#contact" class="btn btn--gold btn--full">Book this package</a>
+        </article>
+
+        <!-- Package 3 -->
+        <article class="pkg-card reveal" style="--i:2">
+          <span class="pkg-duration">7 Days / 6 Nights</span>
+          <h3>Red Sea Escape</h3>
+          <p class="pkg-desc">Two nights in Cairo followed by five unhurried days on the Red Sea coast — reefs, diving, and desert quiet.</p>
+          <div class="pkg-price"><span class="amount">$1,680</span><span class="unit">/ person</span></div>
+          <hr class="pkg-divider">
+          <div class="pkg-features">
+            <div class="pkg-feature"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Giza Pyramids day tour</div>
+            <div class="pkg-feature"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> 5 nights beachfront resort</div>
+            <div class="pkg-feature"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Two guided reef snorkel trips</div>
+            <div class="pkg-feature"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> All-inclusive dining option</div>
+          </div>
+          <a href="#contact" class="btn btn--ink-outline btn--full">Book this package</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================
+       WHY CHOOSE US
+       ======================================================= -->
+  <section class="section why-us" id="why-us">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow"><span class="dot"></span> The difference</span>
+        <h2>Why travel with us</h2>
+        <p>We've been arranging journeys through Egypt for fifteen years — here's what that experience gives you.</p>
+      </div>
+
+      <div class="why-grid reveal-stagger">
+        <div class="why-item reveal" style="--i:0">
+          <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="1.7"/><path d="M5 20c1-3.5 4-5 7-5s6 1.5 7 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+          <div><h3>Expert Egyptologist guides</h3><p>Every tour is led by a licensed Egyptologist, not a general guide — the history comes from people who study it.</p></div>
+        </div>
+        <div class="why-item reveal" style="--i:1">
+          <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3 21V10l9-6 9 6v11" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 21v-6h6v6" stroke="currentColor" stroke-width="1.7"/></svg></div>
+          <div><h3>Handpicked hotels &amp; cruises</h3><p>We personally vet every riverboat cabin and hotel room on our itineraries — no surprises on arrival.</p></div>
+        </div>
+        <div class="why-item reveal" style="--i:2">
+          <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3c-3.5 1-6 2.6-6 2.6v6c0 5 3 8 6 9.4 3-1.4 6-4.4 6-9.4v-6S15.5 4 12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+          <div><h3>24/7 concierge support</h3><p>A dedicated trip concierge is reachable day or night for the length of your journey, in Egypt or at home.</p></div>
+        </div>
+        <div class="why-item reveal" style="--i:3">
+          <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><h3>Best price guarantee</h3><p>Find the same itinerary cheaper elsewhere within 14 days of booking and we'll match it.</p></div>
+        </div>
+        <div class="why-item reveal" style="--i:4">
+          <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="8" cy="9" r="2.6" stroke="currentColor" stroke-width="1.6"/><circle cx="16" cy="9" r="2.6" stroke="currentColor" stroke-width="1.6"/><path d="M3 20c.7-2.8 2.6-4.3 5-4.3S12.3 17.2 13 20M11 20c.7-2.8 2.6-4.3 5-4.3S20.3 17.2 21 20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <div><h3>Small group sizes</h3><p>Group departures are capped at twelve travellers, so temples never feel like a queue.</p></div>
+        </div>
+        <div class="why-item reveal" style="--i:5">
+          <div class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.5"/><path d="M8 17.5c.6-1.8 2-2.5 4-2.5s3.4.7 4 2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div><h3>Seamless visa assistance</h3><p>We prepare and pre-check your entry paperwork, so all you handle at immigration is the stamp.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================
+       TESTIMONIALS
+       ======================================================= -->
+  <section class="section testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-head reveal" style="margin-left:auto; margin-right:auto; text-align:center;">
+        <span class="eyebrow"><span class="dot"></span> Traveller stories</span>
+        <h2>What our travellers say</h2>
+      </div>
+
+      <div class="testimonial-slider reveal">
+        <div class="testimonial-track" id="testimonialTrack" aria-live="polite">
+
+          <div class="testimonial-slide is-active" role="group" aria-label="Testimonial 1 of 4">
+            <div class="stars" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.8 4.4 18l1.4-6.2L1 7.5l6.4-.6L10 1Z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.8 4.4 18l1.4-6.2L1 7.5l6.4-.6L10 1Z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.8 4.4 18l1.4-6.2L1 7.5l6.4-.6L10 1Z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.8 4.4 18l1.4-6.2L1 7.5l6.4-.6L10 1Z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.8 4.4 18l1.4-6.2L1 7.5l6.4-.6L10 1Z"/></svg>
+            </div>
+            <p class="testimonial-quote">"Our guide in Luxor made three-thousand-year-old walls feel like current events. The balloon ride over the Valley of the Kings at sunrise is something I'll describe for the rest of my life."</p>
+            <div class="testimonial-person">
+              <div class="testimonial-avatar" aria-hidden="true">MK</div>
+              <div><div class="testimonial-name">Maria Kowalski</div><div class="testimonial-origin">Warsaw, Poland</div></div>
+            </div>
+          </div>
+
+          <div class="testimonial-slide" role="group" aria-label="Testimonial 2 of 4">
+            <div class="stars" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.8 4.4 18l1.4-6.2L1 7.5l6.4-.6L10 1Z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.8 4.4 18l1.4-6.2L1 7.5l6.4-.6L10 1Z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.8 4.4 18l1.4-6.2L1 7.5l6.4-.6L10 1Z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.8 4.4 18l1.4-6.2L1 7.5l6.4-.6L10 1Z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.8 4.4 18l1.4-6.2L1 7.5l6.4-.6L10 1Z"/></svg>
+            </div>
+            <p class="testimonial-quote">"Booking felt effortless from the first email. The Nile cruise cabin was better than photos suggested, and the concierge line actually answered at 11pm when we needed it."</p>
+            <div class="testimonial-person">
+              <div class="testimonial-avatar" aria-hidden="true">DA</div>
+              <div><div class="testimonial-name">David Adeyemi</div><div class="testimonial-origin">Lagos, Nigeria</div></div>
+            </div>
+          </div>
+
+          <div class="testimonial-slide" role="group" aria-label="Testimonial 3 of 4">
+            <div class="stars" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.8 4.4 18l1.4-6.2L1 7.5l6.4-.6L10 1Z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.8 4.4 18l1.4-6.2L1 7.5l6.4-.6L10 1Z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.8 4.4 18l1.4-6.2L1 7.5l6.4-.6L10 1Z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.8 4.4 18l1.4-6.2L1 7.5l6.4-.6L10 1Z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor" opacity="0.35"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.8 4.4 18l1.4-6.2L1 7.5l6.4-.6L10 1Z"/></svg>
+            </div>
+            <p class="testimonial-quote">"Abu Simbel at sunrise, before the crowds arrived, was worth the early wake-up call twice over. Small group size meant we could actually ask questions instead of shuffling past."</p>
+            <div class="testimonial-person">
+              <div class="testimonial-avatar" aria-hidden="true">RC</div>
+              <div><div class="testimonial-name">Rina Chen</div><div class="testimonial-origin">Vancouver, Canada</div></div>
+            </div>
+          </div>
+
+          <div class="testimonial-slide" role="group" aria-label="Testimonial 4 of 4">
+            <div class="stars" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.8 4.4 18l1.4-6.2L1 7.5l6.4-.6L10 1Z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.8 4.4 18l1.4-6.2L1 7.5l6.4-.6L10 1Z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.8 4.4 18l1.4-6.2L1 7.5l6.4-.6L10 1Z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.8 4.4 18l1.4-6.2L1 7.5l6.4-.6L10 1Z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L10 14.8 4.4 18l1.4-6.2L1 7.5l6.4-.6L10 1Z"/></svg>
+            </div>
+            <p class="testimonial-quote">"We've done a lot of guided travel and this was the most organised. Visa paperwork was ready before we landed, and every transfer driver was already waiting with our names."</p>
+            <div class="testimonial-person">
+              <div class="testimonial-avatar" aria-hidden="true">JL</div>
+              <div><div class="testimonial-name">Julia Lindqvist</div><div class="testimonial-origin">Gothenburg, Sweden</div></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="testimonial-controls">
+          <button class="testimonial-arrow" id="testimonialPrev" aria-label="Previous testimonial">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="testimonial-dots" id="testimonialDots"></div>
+          <button class="testimonial-arrow" id="testimonialNext" aria-label="Next testimonial">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================
+       CALL TO ACTION
+       ======================================================= -->
+  <section class="section cta" id="contact">
+    <div class="container cta-inner">
+      <div class="cta-text reveal">
+        <h2>Your journey along the Nile awaits.</h2>
+        <p>Tell us when you'd like to travel and we'll reply within one business day with an itinerary built around it — no obligation, no spam.</p>
+      </div>
+
+      <form class="cta-form reveal" id="ctaForm" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="ctaName">Full name</label>
+            <input type="text" id="ctaName" name="name" placeholder="Jane Traveller" autocomplete="name">
+            <span class="field-error" id="ctaNameError"></span>
+          </div>
+          <div class="field">
+            <label for="ctaEmail">Email address</label>
+            <input type="email" id="ctaEmail" name="email" placeholder="jane@example.com" autocomplete="email">
+            <span class="field-error" id="ctaEmailError"></span>
+          </div>
+          <button type="submit" class="btn btn--gold btn--full">Request my itinerary</button>
+          <p class="form-success" id="ctaSuccess" role="status">Thank you — your request is in. A trip planner will email you within one business day.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="brand">
+          <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="7" width="36" height="26" rx="13" stroke="#E8C468" stroke-width="2"/>
+            <path d="M20 13c-2.2 0-4 1.7-4 4 0 2.6 4 6.5 4 6.5s4-3.9 4-6.5c0-2.3-1.8-4-4-4Z" fill="#E8C468"/>
+            <path d="M20 23.5V27M17 27h6" stroke="#E8C468" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Explore Egypt
+        </a>
+        <p>Small-group and private journeys through Egypt, planned by people who live and guide there year-round.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Explore Egypt on Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="Explore Egypt on Facebook"><svg viewBox="0 0 24 24" fill="none"><path d="M14 21v-7h2.5l.5-3H14V9c0-.9.3-1.5 1.7-1.5H17V5c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1V11H8v3h2.6v7H14Z" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="Explore Egypt on X"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4l16 16M20 4 4 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></a>
+          <a href="#" aria-label="Explore Egypt on YouTube"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="12" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M11 10l4 2-4 2v-4Z" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#destinations">Destinations</a></li>
+          <li><a href="#packages">Travel packages</a></li>
+          <li><a href="#why-us">Why choose us</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Destinations</h4>
+        <ul>
+          <li><a href="#destinations">Giza &amp; Cairo</a></li>
+          <li><a href="#destinations">Luxor &amp; Karnak</a></li>
+          <li><a href="#destinations">Abu Simbel</a></li>
+          <li><a href="#destinations">Red Sea Coast</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul class="footer-contact">
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v14H4V5Z" stroke="currentColor" stroke-width="1.5"/><path d="m4 6 8 6 8-6" stroke="currentColor" stroke-width="1.5"/></svg> hello@exploreegypt.example</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3.9c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8Z" stroke="currentColor" stroke-width="1.4"/></svg> +20 100 555 0134</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="9.5" r="2.4" stroke="currentColor" stroke-width="1.4"/></svg> Zamalek, Cairo, Egypt</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; <span id="currentYear"></span> Explore Egypt. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Booking Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top button -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script>
+/* =====================================================================
+   EXPLORE EGYPT — site interactions
+   Organised into small, focused functions, each wired up in init().
+   ===================================================================== */
+(function () {
+  "use strict";
+
+  /* ---------------------------------------------------------------
+     1. MOBILE NAVIGATION — hamburger toggle + close on link/outside
+     --------------------------------------------------------------- */
+  function initMobileNav () {
+    var toggle = document.getElementById("navToggle");
+    var panel = document.getElementById("mobilePanel");
+    if (!toggle || !panel) return;
+
+    function openPanel () {
+      panel.classList.add("is-open");
+      toggle.setAttribute("aria-expanded", "true");
+      toggle.setAttribute("aria-label", "Close menu");
+      document.body.style.overflow = "hidden";
+    }
+    function closePanel () {
+      panel.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Open menu");
+      document.body.style.overflow = "";
+    }
+
+    toggle.addEventListener("click", function () {
+      var isOpen = panel.classList.contains("is-open");
+      isOpen ? closePanel() : openPanel();
+    });
+
+    // Close the panel whenever a nav link inside it is used
+    panel.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", closePanel);
+    });
+
+    // Close on Escape for keyboard users
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closePanel();
+    });
+  }
+
+  /* ---------------------------------------------------------------
+     2. STICKY HEADER — adds a solid background once the page scrolls
+        past the hero, and highlights the nav link for the section
+        currently in view.
+     --------------------------------------------------------------- */
+  function initHeaderScroll () {
+    var header = document.getElementById("siteHeader");
+    if (!header) return;
+
+    function onScroll () {
+      if (window.scrollY > 60) {
+        header.classList.add("is-scrolled");
+      } else {
+        header.classList.remove("is-scrolled");
+      }
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
+  /* ---------------------------------------------------------------
+     3. ACTIVE NAV LINK ON SCROLL — IntersectionObserver watches each
+        section and marks the matching nav link as active.
+     --------------------------------------------------------------- */
+  function initActiveNav () {
+    var navLinks = document.querySelectorAll("[data-nav]");
+    var sections = [];
+    navLinks.forEach(function (link) {
+      var id = link.getAttribute("href");
+      if (id && id.charAt(0) === "#") {
+        var section = document.querySelector(id);
+        if (section) sections.push(section);
+      }
+    });
+    if (!("IntersectionObserver" in window) || sections.length === 0) return;
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var id = "#" + entry.target.id;
+          navLinks.forEach(function (link) {
+            link.classList.toggle("is-active", link.getAttribute("href") === id);
+          });
+        }
+      });
+    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+
+    sections.forEach(function (s) { observer.observe(s); });
+  }
+
+  /* ---------------------------------------------------------------
+     4. SMOOTH SCROLL WITH HEADER OFFSET — CSS scroll-behaviour alone
+        would tuck section tops under the fixed header, so anchor
+        clicks are intercepted and offset manually.
+     --------------------------------------------------------------- */
+  function initSmoothScroll () {
+    var header = document.getElementById("siteHeader");
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+      link.addEventListener("click", function (e) {
+        var targetId = link.getAttribute("href");
+        if (!targetId || targetId === "#") return;
+        var target = document.querySelector(targetId);
+        if (!target) return;
+        e.preventDefault();
+        var headerHeight = header ? header.offsetHeight : 0;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 12;
+        window.scrollTo({ top: top, behavior: "smooth" });
+      });
+    });
+  }
+
+  /* ---------------------------------------------------------------
+     5. SCROLL-REVEAL — fades/slides elements in as they enter the
+        viewport. Respects prefers-reduced-motion via CSS.
+     --------------------------------------------------------------- */
+  function initScrollReveal () {
+    var items = document.querySelectorAll(".reveal");
+    if (!("IntersectionObserver" in window) || items.length === 0) {
+      items.forEach(function (el) { el.classList.add("in-view"); });
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    items.forEach(function (el) { observer.observe(el); });
+  }
+
+  /* ---------------------------------------------------------------
+     6. TESTIMONIAL SLIDER — prev/next, dot navigation, autoplay with
+        pause-on-hover/focus, and keyboard arrow support.
+     --------------------------------------------------------------- */
+  function initTestimonialSlider () {
+    var track = document.getElementById("testimonialTrack");
+    var dotsWrap = document.getElementById("testimonialDots");
+    var prevBtn = document.getElementById("testimonialPrev");
+    var nextBtn = document.getElementById("testimonialNext");
+    if (!track || !dotsWrap) return;
+
+    var slides = Array.prototype.slice.call(track.querySelectorAll(".testimonial-slide"));
+    var current = 0;
+    var autoplayId = null;
+
+    // Build dot indicators
+    slides.forEach(function (_, i) {
+      var dot = document.createElement("button");
+      dot.type = "button";
+      dot.setAttribute("aria-label", "Go to testimonial " + (i + 1));
+      if (i === 0) dot.classList.add("is-active");
+      dot.addEventListener("click", function () { goTo(i); restartAutoplay(); });
+      dotsWrap.appendChild(dot);
+    });
+    var dots = Array.prototype.slice.call(dotsWrap.children);
+
+    function goTo (index) {
+      slides[current].classList.remove("is-active");
+      dots[current].classList.remove("is-active");
+      current = (index + slides.length) % slides.length;
+      slides[current].classList.add("is-active");
+      dots[current].classList.add("is-active");
+    }
+
+    function next () { goTo(current + 1); }
+    function prev () { goTo(current - 1); }
+
+    function startAutoplay () {
+      autoplayId = window.setInterval(next, 6500);
+    }
+    function stopAutoplay () {
+      if (autoplayId) { window.clearInterval(autoplayId); autoplayId = null; }
+    }
+    function restartAutoplay () { stopAutoplay(); startAutoplay(); }
+
+    if (nextBtn) nextBtn.addEventListener("click", function () { next(); restartAutoplay(); });
+    if (prevBtn) prevBtn.addEventListener("click", function () { prev(); restartAutoplay(); });
+
+    // Pause on hover/focus so readers can finish a quote
+    var slider = track.closest(".testimonial-slider");
+    if (slider) {
+      slider.addEventListener("mouseenter", stopAutoplay);
+      slider.addEventListener("mouseleave", startAutoplay);
+      slider.addEventListener("focusin", stopAutoplay);
+      slider.addEventListener("focusout", startAutoplay);
+    }
+
+    startAutoplay();
+  }
+
+  /* ---------------------------------------------------------------
+     7. CTA FORM VALIDATION — lightweight vanilla-JS inline validation
+        (no backend attached; shows a success message on pass).
+     --------------------------------------------------------------- */
+  function initCtaForm () {
+    var form = document.getElementById("ctaForm");
+    if (!form) return;
+
+    var nameInput = document.getElementById("ctaName");
+    var emailInput = document.getElementById("ctaEmail");
+    var nameError = document.getElementById("ctaNameError");
+    var emailError = document.getElementById("ctaEmailError");
+    var success = document.getElementById("ctaSuccess");
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function setError (input, errorEl, message) {
+      if (message) {
+        input.classList.add("has-error");
+        errorEl.textContent = message;
+      } else {
+        input.classList.remove("has-error");
+        errorEl.textContent = "";
+      }
+    }
+
+    function validate () {
+      var valid = true;
+
+      if (!nameInput.value.trim()) {
+        setError(nameInput, nameError, "Please enter your name.");
+        valid = false;
+      } else {
+        setError(nameInput, nameError, "");
+      }
+
+      if (!emailInput.value.trim()) {
+        setError(emailInput, emailError, "Please enter your email.");
+        valid = false;
+      } else if (!emailPattern.test(emailInput.value.trim())) {
+        setError(emailInput, emailError, "That email address doesn't look right.");
+        valid = false;
+      } else {
+        setError(emailInput, emailError, "");
+      }
+
+      return valid;
+    }
+
+    // Clear a field's error as soon as the visitor starts fixing it
+    [nameInput, emailInput].forEach(function (input) {
+      input.addEventListener("input", function () {
+        if (input.classList.contains("has-error")) validate();
+      });
+    });
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      success.classList.remove("is-visible");
+      if (!validate()) return;
+
+      // No backend is wired up in this template — this is where a real
+      // fetch() call to your booking/CRM endpoint would go.
+      success.classList.add("is-visible");
+      form.reset();
+    });
+  }
+
+  /* ---------------------------------------------------------------
+     8. BACK TO TOP BUTTON
+     --------------------------------------------------------------- */
+  function initBackToTop () {
+    var btn = document.getElementById("backToTop");
+    if (!btn) return;
+
+    function onScroll () {
+      btn.classList.toggle("is-visible", window.scrollY > 500);
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    btn.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  /* ---------------------------------------------------------------
+     9. FOOTER YEAR
+     --------------------------------------------------------------- */
+  function initFooterYear () {
+    var el = document.getElementById("currentYear");
+    if (el) el.textContent = new Date().getFullYear();
+  }
+
+  /* ---------------------------------------------------------------
+     INIT — run once the DOM is ready
+     --------------------------------------------------------------- */
+  document.addEventListener("DOMContentLoaded", function () {
+    initMobileNav();
+    initHeaderScroll();
+    initActiveNav();
+    initSmoothScroll();
+    initScrollReveal();
+    initTestimonialSlider();
+    initCtaForm();
+    initBackToTop();
+    initFooterYear();
+  });
+})();
+</script>
+</body>
+</html>
