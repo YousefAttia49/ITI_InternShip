@@ -1,0 +1,757 @@
+﻿composer : Loading 
+composer 
+repositories with 
+package information
+At line:1 char:1
++ composer update -W 
+--no-interaction 
+2>&1 | Out-File 
+-Encoding utf8 -F ...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (Loading   
+  compose...age i    
+nformation:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+Updating dependencies
+Lock file 
+operations: 2 
+installs, 49 
+updates, 4 removals
+  - Removing laravel/
+agent-detector 
+(v2.0.2)
+  - Removing 
+laravel/pao (v1.1.2)
+  - Removing symfony/
+polyfill-php84 
+(v1.38.1)
+  - Removing symfony/
+polyfill-php86 
+(v1.41.0)
+  - Downgrading 
+brick/math (0.18.0 
+=> 0.14.8)
+  - Upgrading 
+guzzlehttp/guzzle 
+(7.15.2 => 7.15.3)
+  - Upgrading 
+guzzlehttp/promises 
+(2.5.1 => 2.5.2)
+  - Upgrading hamcres
+t/hamcrest-php 
+(v2.1.1 => v3.0.0)
+  - Downgrading 
+laravel/framework 
+(v13.23.0 => 
+v11.56.0)
+  - Upgrading 
+laravel/pint 
+(v1.30.0 => v1.30.4)
+  - Upgrading 
+laravel/prompts 
+(v0.3.21 => v0.3.23)
+  - Downgrading 
+laravel/tinker 
+(v3.0.2 => v2.11.1)
+  - Upgrading 
+league/commonmark 
+(2.8.3 => 2.10.0)
+  - Upgrading 
+league/flysystem 
+(3.35.2 => 3.35.3)
+  - Upgrading league/
+flysystem-local 
+(3.31.0 => 3.35.3)
+  - Upgrading 
+mockery/mockery 
+(1.6.12 => 1.6.15)
+  - Upgrading 
+myclabs/deep-copy 
+(1.13.4 => 1.14.0)
+  - Upgrading 
+nesbot/carbon 
+(3.13.1 => 3.13.2)
+  - Upgrading 
+nette/schema (v1.3.5 
+=> v1.3.6)
+  - Downgrading phpun
+it/php-code-coverage 
+(12.5.7 => 11.0.12)
+  - Downgrading phpun
+it/php-file-iterator 
+(6.0.1 => 5.1.1)
+  - Downgrading 
+phpunit/php-invoker 
+(6.0.0 => 5.0.1)
+  - Downgrading phpun
+it/php-text-template 
+(5.0.0 => 4.0.1)
+  - Downgrading 
+phpunit/php-timer 
+(8.0.0 => 7.0.1)
+  - Downgrading 
+phpunit/phpunit 
+(12.5.33 => 11.5.56)
+  - Downgrading 
+sebastian/cli-parser 
+(4.2.1 => 3.0.2)
+  - Locking 
+sebastian/code-unit 
+(3.0.3)
+  - Locking sebastian
+/code-unit-reverse-lo
+okup (4.0.1)
+  - Downgrading 
+sebastian/comparator 
+(7.1.8 => 6.3.3)
+  - Downgrading 
+sebastian/complexity 
+(5.0.0 => 4.0.1)
+  - Downgrading 
+sebastian/diff 
+(7.0.0 => 6.0.2)
+  - Downgrading sebas
+tian/environment 
+(8.1.2 => 7.2.1)
+  - Downgrading 
+sebastian/exporter 
+(7.0.3 => 6.3.2)
+  - Downgrading sebas
+tian/global-state 
+(8.0.3 => 7.0.2)
+  - Downgrading sebas
+tian/lines-of-code 
+(4.0.1 => 3.0.1)
+  - Downgrading sebas
+tian/object-enumerato
+r (7.0.0 => 6.0.1)
+  - Downgrading sebas
+tian/object-reflector
+ (5.0.0 => 4.0.1)
+  - Downgrading sebas
+tian/recursion-contex
+t (7.0.1 => 6.0.3)
+  - Downgrading 
+sebastian/type 
+(6.0.4 => 5.1.3)
+  - Downgrading 
+sebastian/version 
+(6.0.0 => 5.0.2)
+  - Upgrading 
+symfony/console 
+(v7.4.15 => v7.4.17)
+  - Upgrading 
+symfony/css-selector 
+(v7.4.9 => v7.4.17)
+  - Upgrading symfony
+/error-handler 
+(v7.4.15 => v7.4.17)
+  - Upgrading symfony
+/event-dispatcher 
+(v7.4.15 => v7.4.17)
+  - Upgrading 
+symfony/finder 
+(v7.4.14 => v7.4.17)
+  - Upgrading symfony
+/http-foundation 
+(v7.4.15 => v7.4.17)
+  - Upgrading 
+symfony/http-kernel 
+(v7.4.15 => v7.4.17)
+  - Upgrading 
+symfony/mailer 
+(v7.4.15 => v7.4.17)
+  - Upgrading 
+symfony/mime 
+(v7.4.15 => v7.4.17)
+  - Upgrading 
+symfony/process 
+(v7.4.13 => v7.4.17)
+  - Upgrading 
+symfony/routing 
+(v7.4.15 => v7.4.17)
+  - Upgrading 
+symfony/translation 
+(v7.4.14 => v7.4.17)
+  - Upgrading 
+symfony/uid (v7.4.9 
+=> v7.4.17)
+  - Upgrading 
+symfony/var-dumper 
+(v7.4.15 => v7.4.17)
+  - Downgrading 
+theseer/tokenizer 
+(2.0.1 => 1.3.1)
+Writing lock file
+Installing 
+dependencies from 
+lock file (including 
+require-dev)
+Package operations: 
+2 installs, 49 
+updates, 4 removals
+  - Downloading symfo
+ny/http-foundation 
+(v7.4.17)
+  - Downloading 
+symfony/console 
+(v7.4.17)
+  - Downloading 
+symfony/css-selector 
+(v7.4.17)
+  - Downloading 
+symfony/var-dumper 
+(v7.4.17)
+  - Downloading 
+symfony/uid (v7.4.17)
+  - Downloading 
+symfony/routing 
+(v7.4.17)
+  - Downloading 
+symfony/process 
+(v7.4.17)
+  - Downloading 
+symfony/mime 
+(v7.4.17)
+  - Downloading symfo
+ny/event-dispatcher 
+(v7.4.17)
+  - Downloading 
+symfony/mailer 
+(v7.4.17)
+  - Downloading symfo
+ny/error-handler 
+(v7.4.17)
+  - Downloading 
+symfony/http-kernel 
+(v7.4.17)
+  - Downloading 
+symfony/finder 
+(v7.4.17)
+  - Downloading 
+symfony/translation 
+(v7.4.17)
+  - Downloading leagu
+e/flysystem-local 
+(3.35.3)
+  - Downloading 
+league/flysystem 
+(3.35.3)
+  - Downloading 
+laravel/framework 
+(v11.56.0)
+  0/17 [>-------]   
+0%
+  3/17 [=>------]  
+17%
+  4/17 [=>------]  
+23%
+  9/17 [====>---]  
+52%
+ 12/17 [=====>--]  
+70%
+ 16/17 [=======>]  
+94%
+ 17/17 [========] 
+100%
+> Illuminate\Foundati
+on\ComposerScripts::p
+rePackageUninstall
+There was an error dispatching or handling the [unknown] event. Continuing with package removal...
+  - Removing symfony/
+polyfill-php86 
+(v1.41.0)
+> Illuminate\Foundati
+on\ComposerScripts::p
+rePackageUninstall
+There was an error dispatching or handling the [unknown] event. Continuing with package removal...
+  - Removing symfony/
+polyfill-php84 
+(v1.38.1)
+> Illuminate\Foundati
+on\ComposerScripts::p
+rePackageUninstall
+There was an error dispatching or handling the [unknown] event. Continuing with package removal...
+  - Removing 
+laravel/pao (v1.1.2)
+> Illuminate\Foundati
+on\ComposerScripts::p
+rePackageUninstall
+There was an error dispatching or handling the [unknown] event. Continuing with package removal...
+  - Removing laravel/
+agent-detector 
+(v2.0.2)
+  - Upgrading symfony
+/http-foundation 
+(v7.4.15 => 
+v7.4.17): Extracting 
+archive
+  - Upgrading 
+guzzlehttp/promises 
+(2.5.1 => 2.5.2): 
+Extracting archive
+  - Upgrading 
+guzzlehttp/guzzle 
+(7.15.2 => 7.15.3): 
+Extracting archive
+  - Upgrading 
+symfony/console 
+(v7.4.15 => 
+v7.4.17): Extracting 
+archive
+  - Upgrading 
+symfony/css-selector 
+(v7.4.9 => v7.4.17): 
+Extracting archive
+  - Upgrading 
+symfony/var-dumper 
+(v7.4.15 => 
+v7.4.17): Extracting 
+archive
+  - Upgrading 
+symfony/uid (v7.4.9 
+=> v7.4.17): 
+Extracting archive
+  - Upgrading 
+symfony/routing 
+(v7.4.15 => 
+v7.4.17): Extracting 
+archive
+  - Upgrading 
+symfony/process 
+(v7.4.13 => 
+v7.4.17): Extracting 
+archive
+  - Upgrading 
+symfony/mime 
+(v7.4.15 => 
+v7.4.17): Extracting 
+archive
+  - Upgrading symfony
+/event-dispatcher 
+(v7.4.15 => 
+v7.4.17): Extracting 
+archive
+  - Upgrading 
+symfony/mailer 
+(v7.4.15 => 
+v7.4.17): Extracting 
+archive
+  - Upgrading symfony
+/error-handler 
+(v7.4.15 => 
+v7.4.17): Extracting 
+archive
+  - Upgrading 
+symfony/http-kernel 
+(v7.4.15 => 
+v7.4.17): Extracting 
+archive
+  - Upgrading 
+symfony/finder 
+(v7.4.14 => 
+v7.4.17): Extracting 
+archive
+  - Downgrading 
+brick/math (0.18.0 
+=> 0.14.8): 
+Extracting archive
+  - Upgrading 
+symfony/translation 
+(v7.4.14 => 
+v7.4.17): Extracting 
+archive
+  - Upgrading 
+nesbot/carbon 
+(3.13.1 => 3.13.2): 
+Extracting archive
+  - Upgrading league/
+flysystem-local 
+(3.31.0 => 3.35.3): 
+Extracting archive
+  - Upgrading 
+league/flysystem 
+(3.35.2 => 3.35.3): 
+Extracting archive
+  - Upgrading 
+nette/schema (v1.3.5 
+=> v1.3.6): 
+Extracting archive
+  - Upgrading 
+league/commonmark 
+(2.8.3 => 2.10.0): 
+Extracting archive
+  - Upgrading 
+laravel/prompts 
+(v0.3.21 => 
+v0.3.23): Extracting 
+archive
+  - Downgrading 
+laravel/framework 
+(v13.23.0 => 
+v11.56.0): 
+Extracting archive
+  - Upgrading 
+laravel/pint 
+(v1.30.0 => 
+v1.30.4): Extracting 
+archive
+  - Downgrading 
+laravel/tinker 
+(v3.0.2 => v2.11.1): 
+Extracting archive
+  - Upgrading hamcres
+t/hamcrest-php 
+(v2.1.1 => v3.0.0): 
+Extracting archive
+  - Upgrading 
+mockery/mockery 
+(1.6.12 => 1.6.15): 
+Extracting archive
+  - Downgrading 
+sebastian/version 
+(6.0.0 => 5.0.2): 
+Extracting archive
+  - Downgrading 
+sebastian/type 
+(6.0.4 => 5.1.3): 
+Extracting archive
+  - Downgrading sebas
+tian/recursion-contex
+t (7.0.1 => 6.0.3): 
+Extracting archive
+  - Downgrading sebas
+tian/object-reflector
+ (5.0.0 => 4.0.1): 
+Extracting archive
+  - Downgrading sebas
+tian/object-enumerato
+r (7.0.0 => 6.0.1): 
+Extracting archive
+  - Downgrading sebas
+tian/global-state 
+(8.0.3 => 7.0.2): 
+Extracting archive
+  - Downgrading 
+sebastian/exporter 
+(7.0.3 => 6.3.2): 
+Extracting archive
+  - Downgrading sebas
+tian/environment 
+(8.1.2 => 7.2.1): 
+Extracting archive
+  - Downgrading 
+sebastian/diff 
+(7.0.0 => 6.0.2): 
+Extracting archive
+  - Downgrading 
+sebastian/comparator 
+(7.1.8 => 6.3.3): 
+Extracting archive
+  - Installing 
+sebastian/code-unit 
+(3.0.3): Extracting 
+archive
+  - Downgrading 
+sebastian/cli-parser 
+(4.2.1 => 3.0.2): 
+Extracting archive
+  - Downgrading 
+phpunit/php-timer 
+(8.0.0 => 7.0.1): 
+Extracting archive
+  - Downgrading phpun
+it/php-text-template 
+(5.0.0 => 4.0.1): 
+Extracting archive
+  - Downgrading 
+phpunit/php-invoker 
+(6.0.0 => 5.0.1): 
+Extracting archive
+  - Downgrading phpun
+it/php-file-iterator 
+(6.0.1 => 5.1.1): 
+Extracting archive
+  - Downgrading 
+theseer/tokenizer 
+(2.0.1 => 1.3.1): 
+Extracting archive
+  - Downgrading sebas
+tian/lines-of-code 
+(4.0.1 => 3.0.1): 
+Extracting archive
+  - Downgrading 
+sebastian/complexity 
+(5.0.0 => 4.0.1): 
+Extracting archive
+  - Installing sebast
+ian/code-unit-reverse
+-lookup (4.0.1): 
+Extracting archive
+  - Downgrading phpun
+it/php-code-coverage 
+(12.5.7 => 11.0.12): 
+Extracting archive
+  - Upgrading 
+myclabs/deep-copy 
+(1.13.4 => 1.14.0): 
+Extracting archive
+  - Downgrading 
+phpunit/phpunit 
+(12.5.33 => 
+11.5.56): Extracting 
+archive
+  0/51 [>-------]   
+0%
+  6/51 [>-------]  
+11%
+ 10/51 [=>------]  
+19%
+ 16/51 [==>-----]  
+31%
+ 20/51 [===>----]  
+39%
+ 26/51 [====>---]  
+50%
+ 30/51 [====>---]  
+58%
+ 37/51 [=====>--]  
+72%
+ 41/51 [======>-]  
+80%
+ 48/51 [=======>]  
+94%
+ 50/51 [=======>]  
+98%
+ 51/51 [========] 
+100%
+Generating optimized 
+autoload files
+> Illuminate\Foundati
+on\ComposerScripts::p
+ostAutoloadDump
+
+In Application.php 
+line 691:
+                     
+  [Error]            
+  Call to undefined  
+   function Illumin  
+  ate\Filesystem\jo  
+  in_paths()         
+                     
+
+Exception trace:
+  at C:\xampp\htdocs\
+PHPTasks\LaravelDay1T
+asks\vendor\laravel\f
+ramework\src\Illumina
+te\Foundation\Applica
+tion.php:691
+ Illuminate\Foundatio
+n\Application->joinPa
+ths() at C:\xampp\htd
+ocs\PHPTasks\LaravelD
+ay1Tasks\vendor\larav
+el\framework\src\Illu
+minate\Foundation\App
+lication.php:479
+ Illuminate\Foundatio
+n\Application->basePa
+th() at C:\xampp\htdo
+cs\PHPTasks\LaravelDa
+y1Tasks\vendor\larave
+l\framework\src\Illum
+inate\Foundation\Appl
+ication.php:453
+ Illuminate\Foundatio
+n\Application->path()
+ at C:\xampp\htdocs\P
+HPTasks\LaravelDay1Ta
+sks\vendor\laravel\fr
+amework\src\Illuminat
+e\Foundation\Applicat
+ion.php:424
+ Illuminate\Foundatio
+n\Application->bindPa
+thsInContainer() at C
+:\xampp\htdocs\PHPTas
+ks\LaravelDay1Tasks\v
+endor\laravel\framewo
+rk\src\Illuminate\Fou
+ndation\Application.p
+hp:412
+ Illuminate\Foundatio
+n\Application->setBas
+ePath() at C:\xampp\h
+tdocs\PHPTasks\Larave
+lDay1Tasks\vendor\lar
+avel\framework\src\Il
+luminate\Foundation\A
+pplication.php:226
+ Illuminate\Foundatio
+n\Application->__cons
+truct() at C:\xampp\h
+tdocs\PHPTasks\Larave
+lDay1Tasks\vendor\lar
+avel\framework\src\Il
+luminate\Foundation\C
+omposerScripts.php:10
+2
+ Illuminate\Foundatio
+n\ComposerScripts::cl
+earCompiled() at C:\x
+ampp\htdocs\PHPTasks\
+LaravelDay1Tasks\vend
+or\laravel\framework\
+src\Illuminate\Founda
+tion\ComposerScripts.
+php:52
+ Illuminate\Foundatio
+n\ComposerScripts::po
+stAutoloadDump() at p
+har://C:/ProgramData/
+ComposerSetup/bin/com
+poser.phar/src/Compos
+er/EventDispatcher/Ev
+entDispatcher.php:512
+ Composer\EventDispat
+cher\EventDispatcher-
+>executeEventPhpScrip
+t() at phar://C:/Prog
+ramData/ComposerSetup
+/bin/composer.phar/sr
+c/Composer/EventDispa
+tcher/EventDispatcher
+.php:289
+ Composer\EventDispat
+cher\EventDispatcher-
+>doDispatch() at phar
+://C:/ProgramData/Com
+poserSetup/bin/compos
+er.phar/src/Composer/
+EventDispatcher/Event
+Dispatcher.php:142
+ Composer\EventDispat
+cher\EventDispatcher-
+>dispatchScript() at 
+phar://C:/ProgramData
+/ComposerSetup/bin/co
+mposer.phar/src/Compo
+ser/Autoload/Autoload
+Generator.php:473
+ Composer\Autoload\Au
+toloadGenerator->dump
+() at phar://C:/Progr
+amData/ComposerSetup/
+bin/composer.phar/src
+/Composer/Installer.p
+hp:366
+ Composer\Installer->
+run() at phar://C:/Pr
+ogramData/ComposerSet
+up/bin/composer.phar/
+src/Composer/Command/
+UpdateCommand.php:278
+ Composer\Command\Upd
+ateCommand->execute()
+ at phar://C:/Program
+Data/ComposerSetup/bi
+n/composer.phar/vendo
+r/symfony/console/Com
+mand/Command.php:298
+ Symfony\Component\Co
+nsole\Command\Command
+->run() at phar://C:/
+ProgramData/ComposerS
+etup/bin/composer.pha
+r/vendor/symfony/cons
+ole/Application.php:1
+040
+ Symfony\Component\Co
+nsole\Application->do
+RunCommand() at phar:
+//C:/ProgramData/Comp
+oserSetup/bin/compose
+r.phar/vendor/symfony
+/console/Application.
+php:301
+ Symfony\Component\Co
+nsole\Application->do
+Run() at phar://C:/Pr
+ogramData/ComposerSet
+up/bin/composer.phar/
+src/Composer/Console/
+Application.php:420
+ Composer\Console\App
+lication->doRun() at 
+phar://C:/ProgramData
+/ComposerSetup/bin/co
+mposer.phar/vendor/sy
+mfony/console/Applica
+tion.php:171
+ Symfony\Component\Co
+nsole\Application->ru
+n() at phar://C:/Prog
+ramData/ComposerSetup
+/bin/composer.phar/sr
+c/Composer/Console/Ap
+plication.php:138
+ Composer\Console\App
+lication->run() at ph
+ar://C:/ProgramData/C
+omposerSetup/bin/comp
+oser.phar/bin/compose
+r:112
+ require() at C:\Prog
+ramData\ComposerSetup
+\bin\composer.phar:29
+
+update [--with WITH] 
+[--prefer-source] 
+[--prefer-dist] 
+[--prefer-install 
+PREFER-INSTALL] 
+[--dry-run] [--dev] 
+[--no-dev] [--lock] 
+[--no-install] 
+[--no-audit] 
+[--audit-format 
+AUDIT-FORMAT] [--no-s
+ecurity-blocking] 
+[--no-autoloader] 
+[--no-suggest] 
+[--no-progress] [-w|-
+-with-dependencies] [
+-W|--with-all-depende
+ncies] [-v|vv|vvv|--v
+erbose] [-o|--optimiz
+e-autoloader] [-a|--c
+lassmap-authoritative
+] 
+[--apcu-autoloader] [
+--apcu-autoloader-pre
+fix APCU-AUTOLOADER-P
+REFIX] [--ignore-plat
+form-req 
+IGNORE-PLATFORM-REQ] 
+[--ignore-platform-re
+qs] 
+[--prefer-stable] 
+[--prefer-lowest] [-m
+|--minimal-changes] 
+[--patch-only] 
+[-i|--interactive] 
+[--root-reqs] 
+[--bump-after-update 
+[BUMP-AFTER-UPDATE]] 
+[--] [<packages>...]
+

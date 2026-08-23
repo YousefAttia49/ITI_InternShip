@@ -1,0 +1,22 @@
+﻿
+   Illuminate\Database\QueryException 
+
+  SQLSTATE[42S02]: Base table or view not found: 1146 Table 'performance_schema.session_status' doesn't exist (Connection: mysql, SQL: select variable_value as `Value` from performance_schema.session_status where variable_name = 'threads_connected')
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:825
+    821Γûò                     $this->getName(), $query, $this->prepareBindings($bindings), $e
+    822Γûò                 );
+    823Γûò             }
+    824Γûò 
+  Γ₧£ 825Γûò             throw new QueryException(
+    826Γûò                 $this->getName(), $query, $this->prepareBindings($bindings), $e
+    827Γûò             );
+    828Γûò         }
+    829Γûò     }
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:407
+      PDOException::("SQLSTATE[42S02]: Base table or view not found: 1146 Table 'performance_schema.session_status' doesn't exist")
+
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:407
+      PDO::prepare("select variable_value as `Value` from performance_schema.session_status where variable_name = 'threads_connected'")
+
