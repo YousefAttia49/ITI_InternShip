@@ -1,0 +1,74 @@
+=== repetition in code 
+== no organization in code (php > in html)
+== data base 
+
+===================== Laravel : PHP FrameWork ===========
+Frame Work : strucre (backages of php ) ==> laravel , node 
+backage : files  
+library : React 
+
+---------------------------- Properities ------------------------
+1- MVC (Design pattern) 
+== Design pattern : code that solve specific problem 
+              --- MVC : Model View Controller  --
+              1- Model ==> Database (relation (use))
+              2- View : front 
+              3- contoller : brain (logic of function in code)
+
+== Sigle tone design pattern : use one object 
+
+users ---> profile , login , register , forget password , payment
+-- one object --->
+
+== Generate Database : (Migration : strucre of columns)
+== fake data : seeder , factory 
+
+== Authentication 
+
+== Gen Ai 
+
+
+
+================================= Tools  : laravel v.13============
+== php >= 8.3
+== package manager : composer 
+== composer download : https://getcomposer.org/download/
+
+=================================== Install Laravel Project =============
+composer global require laravel/installer   =========> single time
+laravel new Projec_name
+
+
+
+============ Environment Variables =====
+doesn't upload on github 
+
+
+=== database INformation 
+== ai_api_key
+
+================================== Run Project ============
+cd demo 
+php artisan serve 
+
+ artisan : tool run commands of laravel 
+
+============================================= stop server ===================
+ctrl + c
+ -------------- error : migration 
+ php artisan migrate 
+
+
+
+
+
+ ========================
+
+ link ==> browser ==>  route ((/))   =====> function   ======> view =
+                                    =====> controller ===> view
+                                                       ===> model  ==> DB ==> VIew ===> User
+
+
+=============== Blade Engine : Enable write code php in html with out writing php tag ====> directive
+
+

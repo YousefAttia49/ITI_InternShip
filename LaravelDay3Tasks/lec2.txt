@@ -1,0 +1,100 @@
+==== Agenda =======
+-- Migrations => up  (php artisan migrate) || down (php artisan migrate:rollback)
+-- Models 
+-- Controller 
+
+/*
+ data types : https://laravel.com/framework/docs/5.3/migrations
+ data types (v.13) :https://laravel.com/framework/docs/13.x/migrations#column-method-foreignId
+*/
+
+/*
+foreign key :
+     $table->unsignedBigInteger('user_id');
+     $table->foreign('user_id')->references('id')->on('users');
+-----------
+          $table->foreignId('user_id')->constrained(); 
+    ----------- 
+    cascadeOnUpdate()  || onUpdate("cascade")
+    cascadeOndelete()  || onDelete("cascade")
+
+
+
+    ---- cascade  : delete --> child(delete)
+    ---- set null : delete --> child(null)
+    ---- restrict  : not permited
+    ---- no action  : no action 
+*/
+************************* Create Tables  (Migrations) **********
+1- Users 
+2- categories 
+3- orders 
+4- products 
+5- orders_items 
+------------------------------------------- create tables -------------
+php artisan make:migration create_categories_table
+php artisan make:migration create_orders_table
+php artisan make:migration create_products_table
+php artisan make:migration create_order_items_table
+
+---------------------- Add Column -------------
+php artisan make:migration add_phone_to_users_table  
+---------------------- remove Column -------------
+php artisan make:migration remove_phone_from_users_table  
+
+
+----------- run ---------
+php artisan migrate 
+
+----------- rollback : delete data from data base =======  table related in another table ==> rollback 2 tables
+php artisan migrate:rollback ===> back step
+php artisan migrate:rollback --batch=2 ===> rollback for batch 2
+php artisan migrate:rollback --step=2 ===> rollback last two migration 
+php artisan migrate:refresh ==> remove + regenerate migration
+
+
+================== relation  (models)  ==> function =======
+php artisan make:model User
+table----> model
+users ---> User
+categories ---> Category
+
+=============================== Relations ===========
+
+https://laravel.com/framework/docs/13.x/eloquent-relationships#main-content
+
+-----------------
+one to many   : model one ===> function 
+many to many 
+one to one 
+
+==============
+One user has many orders :
+model(user) ==> create function orders()
+{
+    $this->hasMany(Order:class);
+}
+
+
+================== Controller ===========
+-r : resource : with controller ==> generate all structure of functions 
+------------ Model -----------
+-m : migration
+-s : seeder 
+-f : factory 
+-R : request
+-r : resource
+-- 
+
+--all : Generate a migration, seeder, factory, policy, resource controller, and form request classes for the modelphp artisan make:controller UserController -r 
+php artisan make:model Payment --all 
+
+
+
+======================== Code MVC ===========
+show all users 
+
+************** Migrations , Models *********
+- create route
+- create function in coltroller 
+-- view ---> generate view
