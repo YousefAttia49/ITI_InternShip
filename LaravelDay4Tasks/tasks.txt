@@ -1,0 +1,23 @@
+=========== Day 1 ====================
+install project laaravel
+=== all students ==> blade 
+== student  ==> blade  ========> route :: get ('/students/1)
+
+
+
+============= Day 2 =============
+handel : migration , models with relation 
+handel  :  index ,  show with all tables
+
+
+=========== show user profile : show orders of this user in table
+
+==================== Day 3 ==============
+complete cruds in all tables  and handel validation 
+any table has relation with another table use this relatio 
+
+
+============== users ===> orders 
+============== product ===> categoryName(click==> category.show) 
+
+handel login and register for user

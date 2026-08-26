@@ -1,0 +1,32 @@
+======== cruds  : create , read , update , delete
+update : 
+2 routes (edit , update )
+edit ===>form  ===> button  ===> id 
+update ==> select data + store 
+======= request
+
+Create :
+
+form (select data)
+(selected data -==> store )
+
+========= seeder(يغذي), factroy (مصنع)
+/**
+== Generate factory :https://laravel.com/framework/docs/eloquent-factories
+php artisan make:factory CategoryFactory
+
+== Generate Seeder : https://laravel.com/framework/docs/13.x/seeding#main-content
+php artisan make:seeder CategorySeeder
+
+== fake data : https://laravel.com/framework/docs/13.x/helpers#method-fake
+
+
+====== component  : https://laravel.com/framework/docs/13.x/blade#components
+== Generate component : 
+php artisan make:component Btn-Component
+
+
+========== Validation : https://laravel.com/framework/docs/13.x/validation#working-with-validated-input
+
+=== Requset : validation  
+php artisan make:request CategoryRequest
