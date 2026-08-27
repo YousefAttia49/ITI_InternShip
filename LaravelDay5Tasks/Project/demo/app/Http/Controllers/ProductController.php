@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Order;
-use App\Models\User;
-use App\Http\Requests\OrderRequest;
+use App\Models\Product;
+use App\Models\Category;
+use App\Http\Requests\ProductRequest;
 
 use Error;
 
-class OrderController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,8 @@ class OrderController extends Controller
     public function index()
     {
         //
-        $orders = Order::all();
-        return view('orders.index', compact('orders'));
-        
+        $products = Product::all();
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -28,19 +27,19 @@ class OrderController extends Controller
     public function create()
     {
         //
-        $users = User::all();
-        return view('orders.create', compact('users'));
+        $categories = Category::all();
+        return view('products.create', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(OrderRequest $request)
+    public function store(ProductRequest $request)
     {
         //
         $requestedData = $request->validated();
-        Order::create($requestedData);
-        return to_route('orders.index');
+        Product::create($requestedData);
+        return to_route('products.index');
     }
 
     /**
@@ -49,8 +48,8 @@ class OrderController extends Controller
     public function show(string $id)
     {
         //
-        $order = Order::findorfail($id);
-        return view('orders.show', compact('order'));
+        $product = Product::findorfail($id);
+        return view('products.show', compact('product'));
     }
 
     /**
@@ -58,22 +57,22 @@ class OrderController extends Controller
      */
     public function edit(string $id)
     {
-        $order = Order::findorfail($id);
-        $users = User::all();
+        $product = Product::findorfail($id);
+        $categories = Category::all();
         //
-        return view('orders.update', compact('order', 'users'));
+        return view('products.update', compact('product', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(OrderRequest $request, string $id)
+    public function update(ProductRequest $request, string $id)
     {
         try {
             $validatedRequst = $request->validated();  // array
-            $order = Order::findorfail($id);
-            $order->update($validatedRequst);
-            return view("orders.show", compact('order'));
+            $product = Product::findorfail($id);
+            $product->update($validatedRequst);
+            return view("products.show", compact('product'));
             //code...
         } catch (Error $e) {
             //throw $th;
@@ -87,8 +86,8 @@ class OrderController extends Controller
     public function destroy(string $id)
     {
         //
-        $order = Order::findorfail($id);
-        $order->delete();
-        return to_route('orders.index');
+        $product = Product::findorfail($id);
+        $product->delete();
+        return to_route('products.index');
     }
 }
